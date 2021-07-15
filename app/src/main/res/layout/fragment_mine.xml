@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                >
+
+                <com.example.newbiechen.ireader.widget.RoundImageView
+                    app:type="circle"
+                    android:id="@+id/ci_head"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/head"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="15dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tx_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@id/ci_head"
+                    android:text="张三"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tx_user_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@id/ci_head"
+                    android:text="微信号：loading Lzh"
+                    android:layout_below="@id/tx_username"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/light_blue"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+
+            <include layout="@layout/layout_center_list_item"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</FrameLayout>
+
+
