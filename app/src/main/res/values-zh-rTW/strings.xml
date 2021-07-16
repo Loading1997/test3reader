@@ -51,6 +51,7 @@
     <string name="nb.fragment.title.bookshelf">書架</string>
     <string name="nb.fragment.title.community">社區</string>
     <string name="nb.fragment.title.find">發現</string>
+    <string name="nb.fragment.title.mine">我的</string>
 
     <!--fragment-->
     <string name="nb.fragment.community.comment">綜合討論區</string>

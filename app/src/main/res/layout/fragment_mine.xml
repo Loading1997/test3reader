@@ -62,11 +62,18 @@
                     android:textColor="@color/light_blue"
                     android:layout_marginTop="5dp"
                     android:textSize="16sp" />
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_arrow_right"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="36dp"
+                    />
             </RelativeLayout>
 
 
-
-            <include layout="@layout/layout_center_list_item"/>
+            <include layout="@layout/layout_center_list_item" />
 
         </LinearLayout>
 

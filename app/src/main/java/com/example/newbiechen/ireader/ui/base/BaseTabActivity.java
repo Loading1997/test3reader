@@ -21,7 +21,7 @@ import butterknife.Unbinder;
 public abstract class BaseTabActivity extends BaseActivity {
     /**************View***************/
     @BindView(R.id.tab_tl_indicator)
-    protected SmartTabLayout mTlIndicator;
+    protected TabLayout mTlIndicator;
     @BindView(R.id.tab_vp)
     protected ViewPager mVp;
     /************Params*******************/
@@ -48,8 +48,7 @@ public abstract class BaseTabActivity extends BaseActivity {
         TabFragmentPageAdapter adapter = new TabFragmentPageAdapter(getSupportFragmentManager());
         mVp.setAdapter(adapter);
         mVp.setOffscreenPageLimit(3);
-//        mTlIndicator.setupWithViewPager(mVp);
-        mTlIndicator.setViewPager(mVp);
+        mTlIndicator.setupWithViewPager(mVp);
     }
 
     /**

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -18,10 +19,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.newbiechen.ireader.R;
+import com.example.newbiechen.ireader.ui.adapter.SectionsPagerAdapter;
+import com.example.newbiechen.ireader.ui.base.BaseActivity;
 import com.example.newbiechen.ireader.ui.base.BaseTabActivity;
 import com.example.newbiechen.ireader.ui.fragment.BookShelfFragment;
+import com.example.newbiechen.ireader.ui.fragment.BookSortFragment;
 import com.example.newbiechen.ireader.ui.fragment.CommunityFragment;
 import com.example.newbiechen.ireader.ui.fragment.FindFragment;
+import com.example.newbiechen.ireader.ui.fragment.MineFragment;
 import com.example.newbiechen.ireader.utils.Constant;
 import com.example.newbiechen.ireader.utils.PermissionsChecker;
 import com.example.newbiechen.ireader.utils.SharedPreUtils;
@@ -32,6 +37,7 @@ import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -41,7 +47,7 @@ import java.util.List;
 import butterknife.BindView;
 import okhttp3.OkHttpClient;
 
-public class MainActivity extends BaseTabActivity{
+public class MainActivity extends BaseActivity {
     /*************Constant**********/
     private static final int WAIT_INTERVAL = 2000;
     private static final int PERMISSIONS_REQUEST_STORAGE = 1;
@@ -56,6 +62,10 @@ public class MainActivity extends BaseTabActivity{
     /*****************Params*********************/
     private boolean isPrepareFinish = false;
 
+    @BindView(R.id.tab_tl_indicator)
+    protected SmartTabLayout mTlIndicator;
+    @BindView(R.id.tab_vp)
+    protected ViewPager mVp;
     @BindView(R.id.jptabar)
     JPTabBar mJpTabBar;
 
@@ -86,30 +96,39 @@ public class MainActivity extends BaseTabActivity{
         getSupportActionBar().setTitle("");
     }
 
-    @Override
+/*    @Override
     protected List<Fragment> createTabFragments() {
         initFragment();
         return mFragmentList;
-    }
+    }*/
 
-    private void initFragment(){
+    private void initFragmentAndTabBar(){
+        Fragment discoveryFragment = new FindFragment();
         Fragment bookShelfFragment = new BookShelfFragment();
         Fragment communityFragment = new CommunityFragment();
-        Fragment discoveryFragment = new FindFragment();
-        mFragmentList.add(bookShelfFragment);
-        mFragmentList.add(communityFragment);
+//        Fragment mineFragment = new MineFragment();
+        Fragment bookSortFragment = new BookSortFragment();
         mFragmentList.add(discoveryFragment);
+        mFragmentList.add(bookShelfFragment);
+        mFragmentList.add(bookSortFragment);
+        mFragmentList.add(communityFragment);
+//        mFragmentList.add(mineFragment);
+
+        mVp.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager(),mFragmentList));
+//        viewPager.setOnPageChangeListener(this);
+        mJpTabBar.setContainer(mVp);
     }
 
-    @Override
+/*    @Override
     protected List<String> createTabTitles() {
         String [] titles = getResources().getStringArray(R.array.nb_fragment_title);
         return Arrays.asList(titles);
-    }
+    }*/
 
     @Override
     protected void initWidget() {
         super.initWidget();
+        initFragmentAndTabBar();
         //性别选择框
         showSexChooseDialog();
 
