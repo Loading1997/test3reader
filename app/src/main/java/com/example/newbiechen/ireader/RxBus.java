@@ -75,5 +75,9 @@ public class RxBus{
             this.code = code;
             this.event = event;
         }
+
+        public void hello(int hello, int world){
+
+        }
     }
 }
