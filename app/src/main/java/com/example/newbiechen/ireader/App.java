@@ -21,6 +21,7 @@ public class App extends Application {
         super.onCreate();
         sInstance = this;
         Log.e("lzhlog","helloworld");
+        Log.e("lzhlog","helloworld2");
         // TODO:暂时没空适配高版本
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             startService(new Intent(getContext(), DownloadService.class));
