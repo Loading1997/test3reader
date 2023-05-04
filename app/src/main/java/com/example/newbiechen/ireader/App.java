@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import com.example.newbiechen.ireader.service.DownloadService;
 import com.squareup.leakcanary.LeakCanary;
@@ -19,7 +20,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-
+        Log.e("lzhlog","helloworld");
         // TODO:暂时没空适配高版本
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             startService(new Intent(getContext(), DownloadService.class));
